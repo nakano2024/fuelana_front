@@ -1,30 +1,29 @@
-import { useState } from "react";
-import { useGeolocated } from "react-geolocated";
+import { useEffect, useState } from "react";
+
 
 
 export const GpsPosition = (props) => {
 
-    const{coords ,isGeolocationAvailable , isGeolocationEnabled }
-    = useGeolocated({
-        positionOptions  : {
-            enableHighAccuracy: false,
-        },
-        userDecisionTimeout : 5000,
-    });
+    const [position , setPosition] = useState({lon : null , lati : null}); 
 
-    if(!isGeolocationAvailable){
-        return<div>お使いの端末では、位置情報機能を利用できません。</div>
-    }
+    useEffect(() => {
 
-    if(!isGeolocationEnabled){
-        return <div>位置情報の取得を許可してください。</div>
-    }
+        navigator.geolocation.getCurrentPosition(
+            (position) => {
+                setPosition({
+                    lon : position.coords.longitude, 
+                    lati : position.coords.latitude
+                });
+            },
+            (error) => {
+                window.alert(error);
+            }
+        );
 
-    if(isGeolocationAvailable && isGeolocationEnabled){
-        return<div>
-            <div>
-                現在地は、経度{coords.longitude.toFixed(4)}度、緯度{coords.latitude.toFixed(4)}度です。
-            </div>
-        </div>
-    }
+    } , []);
+
+    return<div>
+        現在の経度は{position.lon}度、緯度は{position.lati}度
+    </div>
+    
 }
