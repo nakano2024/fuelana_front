@@ -42,7 +42,7 @@ export const TotalDistance = (props)=>{
             const option = {units : "meters"};
             //asで関数をinportした場合、.defaultで呼び出す
             const distance = calcDistance.default(from , to , option);
-            setTotalDistance(totalDistance + distance);
+            setTotalDistance(totalDistance => totalDistance + distance);
         }
     } , [currentPos , lastPos]);
 
