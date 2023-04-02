@@ -42,12 +42,14 @@ export const TotalDistance = (props)=>{
             const option = {units : "meters"};
             //asで関数をinportした場合、.defaultで呼び出す
             const distance = calcDistance.default(from , to , option);
-            setTotalDistance(totalDistance => totalDistance + distance);
+            setTotalDistance(totalDistance + distance);
         }
     } , [currentPos , lastPos]);
 
 
     return<div>
+        {currentPos.long !== null && currentPos.lati !== null &&
+        <div>現在の経度 : {currentPos.long},現在の緯度 : {currentPos.lati}</div>}
         現在の移動距離は、{totalDistance}mです。
     </div>
 }
