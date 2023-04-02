@@ -48,8 +48,12 @@ export const TotalDistance = (props)=>{
 
 
     return<div>
+        {lastPos.long !== null && lastPos.lati !== null &&
+        <div>現在の経度 : {lastPos.long},現在の緯度 : {lastPos.lati}</div>}
+        
         {currentPos.long !== null && currentPos.lati !== null &&
         <div>現在の経度 : {currentPos.long},現在の緯度 : {currentPos.lati}</div>}
-        現在の移動距離は、{totalDistance}mです。
+        
+        <div>現在の移動距離は、{totalDistance}mです。</div>
     </div>
 }
