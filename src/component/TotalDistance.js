@@ -30,7 +30,7 @@ export const TotalDistance = (props)=>{
 
     //currentPosを取得するたびに、totalDistanceに計上していく
     useEffect(() => {
-        if(lastPos.long && lastPos.lati){
+        if(lastPos.long != null && lastPos.lati != null){
             const from = helpers.point([lastPos.long , lastPos.lati]);
             const to = helpers.point([currentPos.long , currentPos.lati]);
             const option = {units : "merters"};
