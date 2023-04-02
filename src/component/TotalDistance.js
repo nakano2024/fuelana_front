@@ -31,7 +31,7 @@ export const TotalDistance = (props)=>{
             {
                 enableHighAccuracy : true,
                 timeout : 5000,
-                maximumAge : 10
+                maximumAge : 1000
             }
         );
         return () => navigator.geolocation.clearWatch(watchId);
