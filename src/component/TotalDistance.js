@@ -41,7 +41,7 @@ export const TotalDistance = (props)=>{
         if(currentPos.long !== null && currentPos.lati !== null && lastPos.long !== null && lastPos.lati !== null){
             const from = helpers.point([lastPos.long , lastPos.lati]);
             const to = helpers.point([currentPos.long , currentPos.lati]);
-            const option = {units : "meters"};
+            const option = {units : "kilometers"};
             //asで関数をinportした場合、.defaultで呼び出す
             const delta = calcDistance.default(from , to , option);
             setTotalDistance(totalDistance + delta);
@@ -56,6 +56,6 @@ export const TotalDistance = (props)=>{
         {currentPos.long !== null && currentPos.lati !== null &&
         <div>現在の経度 : {currentPos.long},現在の緯度 : {currentPos.lati}</div>}
         
-        <div>現在の移動距離は、{totalDistance.toFixed(3)}mです。</div>
+        <div>現在の移動距離は、{totalDistance.toFixed(3)}kmです。</div>
     </div>
 }
