@@ -11,13 +11,13 @@ export const GpsPosition = (props) => {
         const watchId = navigator.geolocation.watchPosition(
             (pos) => {
                 const {lon , lati} = pos.coords;
-                const newPos = {lon : lon , lati : lati};
-                setPosition(newPos);
+                setPosition({lon , lati});
             },
             (err) => {
 
             }
         );
+        return () => navigator.geolocation.clearWatch(watchId);
 
     } , []);
 
