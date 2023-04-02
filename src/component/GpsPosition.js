@@ -8,7 +8,7 @@ export const GpsPosition = (props) => {
 
     useEffect(() => {
 
-        navigator.geolocation.getCurrentPosition(
+        navigator.geolocation.watchPosition(
             (position) => {
                 setPosition({
                     lon : position.coords.longitude, 
@@ -16,14 +16,15 @@ export const GpsPosition = (props) => {
                 });
             },
             (error) => {
-                window.alert(error);
             }
         );
 
     } , []);
 
-    return<div>
-        現在の経度は{position.lon}度、緯度は{position.lati}度
-    </div>
+    if("geolocation" in navigator  ){
+        return<div>
+            現在の経度は{position.lon}度、緯度は{position.lati}度
+        </div>
+    }
     
 }
