@@ -15,13 +15,13 @@ export const TotalDistance = (props)=>{
                 if(pos.coords){
                     const long = pos.coords.longitude;
                     const lati = pos.coords.latitude;
+                    const newCurrent = {long , lati};
                     setCurrentPos(pre => {
-                        const current = {long , lati};
                         //前回のcurrentPosがnull、つまり初回の場合は同じ値を入れる
                         pre.long !== null && pre.lati !== null ?
-                            setLastPos(pre) : setLastPos(current);
+                            setLastPos(pre) : setLastPos(newCurrent);
                         //また、新たなcurrentの値として、新しい位置情報を返す
-                        return current;
+                        return newCurrent;
                     });
                 }
             },
