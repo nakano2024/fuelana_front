@@ -40,7 +40,8 @@ export const TotalDistance = (props)=>{
             const from = helpers.point([lastPos.long , lastPos.lati]);
             const to = helpers.point([currentPos.long , currentPos.lati]);
             const option = {units : "meters"};
-            const distance = calcDistance(from , to , option);
+            //asで関数をinportした場合、.defaultで呼び出す
+            const distance = calcDistance.default(from , to , option);
             setTotalDistance(totalDistance + distance);
         }
     } , [currentPos , lastPos]);
