@@ -41,8 +41,8 @@ export const TotalDistance = (props)=>{
             const to = helpers.point([currentPos.long , currentPos.lati]);
             const option = {units : "meters"};
             //asで関数をinportした場合、.defaultで呼び出す
-            const distance = calcDistance.default(from , to , option);
-            setTotalDistance(totalDistance + distance);
+            const deltaDistance = calcDistance.default(from , to , option) + totalDistance;
+            setTotalDistance(deltaDistance);
         }
     } , [currentPos , lastPos]);
 
