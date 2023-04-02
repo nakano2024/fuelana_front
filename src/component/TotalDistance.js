@@ -12,14 +12,16 @@ export const TotalDistance = (props)=>{
         //常に現在地を取得し続ける
         const watchId = navigator.geolocation.watchPosition(
             (pos) => {
-                const long = pos.coords.longitude;
-                const lati = pos.coords.latitude;
-                //currentPosの方がnull、つまり初回の場合は同じ値を入れる
-                currentPos.long !== null && currentPos.lati !== null? 
-                    setLastPos(currentPos):
-                    setLastPos({long , lati})
-                ;
-                setCurrentPos({long , lati});
+                if(pos.coords){
+                    const long = pos.coords.longitude;
+                    const lati = pos.coords.latitude;
+                    //currentPosがnull、つまり初回の場合は同じ値を入れる
+                    currentPos.long !== null && currentPos.lati !== null? 
+                        setLastPos(currentPos):
+                        setLastPos({long , lati})
+                    ;
+                    setCurrentPos({long , lati});
+                }
             },
             (err) => {
                 console.log(err);
