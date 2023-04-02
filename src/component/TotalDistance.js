@@ -6,7 +6,7 @@ export const TotalDistance = (props)=>{
     
     const [totalDistance , setTotalDistance] = useState(0.0);
     const [lastPos , setLastPos] = useState({long : null , lati : null});
-    const [currentPos , setCurrentPos] = useState({long : null , lati : null});
+    const [currentPos , setCurrentPos] = useState({long : 0.0 , lati : 0.0});
 
     useEffect(() => {
         //常に現在地を取得し続ける
@@ -30,14 +30,13 @@ export const TotalDistance = (props)=>{
 
     //currentPosを取得するたびに、totalDistanceに計上していく
     useEffect(() => {
-        if(currentPos.long && currentPos.lati && lastPos.long && lastPos.lati){
+        if(lastPos.long && lastPos.lati){
             const from = helpers.point([lastPos.long , lastPos.lati]);
             const to = helpers.point([currentPos.long , currentPos.lati]);
             const option = {units : "merters"};
             const distance = calcDistance(from , to , option);
             setTotalDistance(totalDistance + distance);
         }
-
         //lastPosのプロパティを現在地で上書きする
         const newLastLong = currentPos.long;
         const newLastLati = currentPos.lati;
