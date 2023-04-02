@@ -4,7 +4,7 @@ import { useEffect, useState } from "react";
 
 export const GpsPosition = (props) => {
 
-    const [position , setPosition] = useState({lon : null , lati : null}); 
+    const [position , setPosition] = useState({lon : 0.0 , lati : 0.0}); 
 
     useEffect(() => {
 
@@ -14,7 +14,7 @@ export const GpsPosition = (props) => {
                 setPosition({lon , lati});
             },
             (err) => {
-                window.alert("位置情報の取得に失敗しました。");
+                navigator.geolocation.clearWatch(watchId);
             },
             {
                 enableHighAccuracy : false,
