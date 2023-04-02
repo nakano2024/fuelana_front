@@ -10,11 +10,16 @@ export const GpsPosition = (props) => {
 
         const watchId = navigator.geolocation.watchPosition(
             (pos) => {
-                const {lon , lati} = pos.coords;
+                const {lati , lon} = pos.coords;
                 setPosition({lon , lati});
             },
             (err) => {
-
+                window.alert("位置情報の取得に失敗しました。");
+            },
+            {
+                enableHighAccuracy : false,
+                timeout : 500,
+                maximumAge : 0
             }
         );
         return () => navigator.geolocation.clearWatch(watchId);
