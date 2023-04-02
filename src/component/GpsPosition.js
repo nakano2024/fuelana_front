@@ -10,7 +10,8 @@ export const GpsPosition = (props) => {
 
         const watchId = navigator.geolocation.watchPosition(
             (pos) => {
-                const {lati , lon} = pos.coords;
+                const lon  = pos.coords.longitude;
+                const lati = pos.coords.latitude;
                 setPosition({lon , lati});
             },
             (err) => {
