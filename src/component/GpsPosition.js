@@ -18,19 +18,18 @@ export const GpsPosition = (props) => {
                 navigator.geolocation.clearWatch(watchId);
             },
             {
-                enableHighAccuracy : false,
+                enableHighAccuracy : true,
                 timeout : 500,
                 maximumAge : 0
             }
         );
+        //useEffectに設定したコールバックの戻り値は、コンポーネントのアンマウント時に返される
         return () => navigator.geolocation.clearWatch(watchId);
-
     } , []);
 
 
     return<div>
         現在の経度は{position.lon}度、緯度は{position.lati}度
     </div>
-    
     
 }
