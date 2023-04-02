@@ -31,7 +31,7 @@ export const TotalDistance = (props)=>{
             {
                 enableHighAccuracy : false,
                 timeout : 5000,
-                maximumAge : 10000
+                maximumAge : 10
             }
         );
         return () => navigator.geolocation.clearWatch(watchId);
@@ -51,7 +51,7 @@ export const TotalDistance = (props)=>{
 
     return<div>
         {lastPos.long !== null && lastPos.lati !== null &&
-        <div>現在の経度 : {lastPos.long},現在の緯度 : {lastPos.lati}</div>}
+        <div>前回の経度 : {lastPos.long},前回の緯度 : {lastPos.lati}</div>}
         
         {currentPos.long !== null && currentPos.lati !== null &&
         <div>現在の経度 : {currentPos.long},現在の緯度 : {currentPos.lati}</div>}
