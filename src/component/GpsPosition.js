@@ -18,8 +18,8 @@ export const GpsPosition = (props) => {
                 navigator.geolocation.clearWatch(watchId);
             },
             {
-                enableHighAccuracy : true,
-                timeout : 500,
+                enableHighAccuracy : false,
+                timeout : 5000,
                 maximumAge : 0
             }
         );
