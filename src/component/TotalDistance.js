@@ -35,7 +35,7 @@ export const TotalDistance = (props)=>{
             const to = helpers.point([currentPos.long , currentPos.lati]);
             const option = {units : "merters"};
             const distance = calcDistance(from , to , option);
-            setTotalDistance(totalDistance + distance);
+            setTotalDistance(totalDistance => totalDistance + distance);
         }
         //lastPosのプロパティを現在地で上書きする
         const newLastLong = currentPos.long;
