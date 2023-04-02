@@ -6,7 +6,7 @@ export const TotalDistance = (props)=>{
     
     const [totalDistance , setTotalDistance] = useState(0.0);
     const [lastPos , setLastPos] = useState({long : null , lati : null});
-    const [currentPos , setCurrentPos] = useState({long : 0.0 , lati : 0.0});
+    const [currentPos , setCurrentPos] = useState({long : null , lati : null});
 
     useEffect(() => {
         //常に現在地を取得し続ける
@@ -14,9 +14,16 @@ export const TotalDistance = (props)=>{
             (pos) => {
                 const long = pos.coords.longitude;
                 const lati = pos.coords.latitude;
+                //currentPosの方がnull、つまり初回の場合は同じ値を入れる
+                currentPos.long !== null && currentPos.lati !== null? 
+                    setLastPos(currentPos):
+                    setLastPos({long , lati})
+                ;
                 setCurrentPos({long , lati});
             },
-            (err) => {},
+            (err) => {
+                console.log(err);
+            },
             {
                 enableHighAccuracy : false,
                 timeout : 5000,
@@ -24,25 +31,17 @@ export const TotalDistance = (props)=>{
             }
         );
         return () => navigator.geolocation.clearWatch(watchId);
-    },
-    []);
+    }, []);
 
-
-    //currentPosを取得するたびに、totalDistanceに計上していく
     useEffect(() => {
-        if(lastPos.long != null && lastPos.lati != null){
+        if(currentPos.long !== null && currentPos.lati !== null && lastPos.long !== null && lastPos.lati !== null){
             const from = helpers.point([lastPos.long , lastPos.lati]);
             const to = helpers.point([currentPos.long , currentPos.lati]);
-            const option = {units : "merters"};
+            const option = {units : "meters"};
             const distance = calcDistance(from , to , option);
             setTotalDistance(totalDistance => totalDistance + distance);
         }
-        //lastPosのプロパティを現在地で上書きする
-        const newLastLong = currentPos.long;
-        const newLastLati = currentPos.lati;
-        setLastPos({newLastLong , newLastLati});
-    } ,[currentPos]);
-
+    } , [currentPos , lastPos]);
 
 
     return<div>
