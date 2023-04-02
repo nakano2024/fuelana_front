@@ -39,7 +39,7 @@ export const TotalDistance = (props)=>{
             const to = helpers.point([currentPos.long , currentPos.lati]);
             const option = {units : "meters"};
             const distance = calcDistance(from , to , option);
-            setTotalDistance(totalDistance => totalDistance + distance);
+            setTotalDistance(totalDistance + distance);
         }
     } , [currentPos , lastPos]);
 
