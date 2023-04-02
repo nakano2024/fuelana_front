@@ -8,23 +8,23 @@ export const GpsPosition = (props) => {
 
     useEffect(() => {
 
-        navigator.geolocation.watchPosition(
-            (position) => {
-                setPosition({
-                    lon : position.coords.longitude, 
-                    lati : position.coords.latitude
-                });
+        const watchId = navigator.geolocation.watchPosition(
+            (pos) => {
+                const {lon , lati} = pos.coords;
+                const newPos = {lon : lon , lati : lati};
+                setPosition(newPos);
             },
-            (error) => {
+            (err) => {
+
             }
         );
 
     } , []);
 
-    if("geolocation" in navigator  ){
-        return<div>
-            現在の経度は{position.lon}度、緯度は{position.lati}度
-        </div>
-    }
+
+    return<div>
+        現在の経度は{position.lon}度、緯度は{position.lati}度
+    </div>
+    
     
 }
