@@ -4,7 +4,7 @@ import * as helpers from '@turf/helpers';
 
 export const TotalDistance = (props)=>{
     
-    const [totalDistance , setTotalDistance] = useState(0.0);
+    const [totalDistance , setTotalDistance] = useState(0);
     const [lastPos , setLastPos] = useState({long : null , lati : null});
     const [currentPos , setCurrentPos] = useState({long : null , lati : null});
 
@@ -15,12 +15,14 @@ export const TotalDistance = (props)=>{
                 if(pos.coords){
                     const long = pos.coords.longitude;
                     const lati = pos.coords.latitude;
-                    //currentPosがnull、つまり初回の場合は同じ値を入れる
-                    currentPos.long !== null && currentPos.lati !== null? 
-                        setLastPos(currentPos):
-                        setLastPos({long , lati})
-                    ;
-                    setCurrentPos({long , lati});
+                    setCurrentPos(pre => {
+                        const current = {long , lati};
+                        //前回のcurrentPosがnull、つまり初回の場合は同じ値を入れる
+                        pre.long !== null && pre.lati !== null ?
+                            setLastPos(pre) : setLastPos(current);
+                        //また、新たなcurrentの値として、新しい位置情報を返す
+                        return current;
+                    });
                 }
             },
             (err) => {
@@ -29,7 +31,7 @@ export const TotalDistance = (props)=>{
             {
                 enableHighAccuracy : false,
                 timeout : 5000,
-                maximumAge : 0
+                maximumAge : 10000
             }
         );
         return () => navigator.geolocation.clearWatch(watchId);
@@ -41,8 +43,8 @@ export const TotalDistance = (props)=>{
             const to = helpers.point([currentPos.long , currentPos.lati]);
             const option = {units : "meters"};
             //asで関数をinportした場合、.defaultで呼び出す
-            const deltaDistance = calcDistance.default(from , to , option) + totalDistance;
-            setTotalDistance(deltaDistance);
+            const delta = calcDistance.default(from , to , option);
+            setTotalDistance(totalDistance + delta);
         }
     } , [currentPos , lastPos]);
 
