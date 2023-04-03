@@ -48,7 +48,7 @@ export const TotalDistance = (props)=>{
             const delta = calcDistance.default(from , to , option);
             setTotalDistance((preDis) => {
                 if(delta >= 0.006)return preDis + delta;
-                return delta;
+                return preDis;
             });
         }
     } , [currentPos , lastPos]);
