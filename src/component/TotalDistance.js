@@ -20,7 +20,7 @@ export const TotalDistance = (props)=>{
                         //前回のcurrentPosがnull、つまり初回の場合は同じ値を入れる
                         pre.long !== null && pre.lati !== null ?
                             setLastPos(pre) : setLastPos(newCurrent);
-                        //また、新たなcurrentの値として、新しい位置情報を返す
+                        //また、新たなcurrentの値を返す
                         return newCurrent;
                     });
                 }
@@ -31,7 +31,7 @@ export const TotalDistance = (props)=>{
             {
                 enableHighAccuracy : true,
                 timeout : 5000,
-                maximumAge : 5000
+                maximumAge : 10000
             }
         );
         return () => navigator.geolocation.clearWatch(watchId);
