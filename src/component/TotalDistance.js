@@ -46,9 +46,7 @@ export const TotalDistance = (props)=>{
             const option = {units : "kilometers"};
             //asで関数をinportした場合、.defaultで呼び出す
             const delta = calcDistance.default(from , to , option);
-            setTotalDistance((preDis) => 
-                delta >= 0.006 ? preDis + delta : preDis
-            );
+            setTotalDistance((preDis) => delta >= 0.006 ? preDis + delta : preDis);
         }
     } , [currentPos , lastPos]);
 
