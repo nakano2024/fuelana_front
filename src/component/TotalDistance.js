@@ -47,8 +47,8 @@ export const TotalDistance = (props)=>{
             //asで関数をinportした場合、.defaultで呼び出す
             const delta = calcDistance.default(from , to , option);
             setTotalDistance((current) => {
-                if(delta >= 0.05)return current + delta;
-                return current;
+                return current + delta;
+              
             });
             
         }
