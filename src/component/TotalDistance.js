@@ -47,7 +47,7 @@ export const TotalDistance = (props)=>{
             //asで関数をinportした場合、.defaultで呼び出す
             const delta = calcDistance.default(from , to , option);
             //GPSの誤差を防ぐため、4m以上の移動のみを計上する
-            delta >= 0.04 &&
+            delta >= 0.004 &&
                 setTotalDistance(totalDistance + delta);
         }
     } , [currentPos , lastPos]);
