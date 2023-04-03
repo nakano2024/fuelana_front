@@ -31,7 +31,7 @@ export const TotalDistance = (props)=>{
                 console.log(err);
             },
             {
-                enableHighAccuracy : false,
+                enableHighAccuracy : true,
                 timeout : 5000,
                 maximumAge : 1000
             }
