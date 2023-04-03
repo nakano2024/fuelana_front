@@ -45,8 +45,12 @@ export const TotalDistance = (props)=>{
             const to = helpers.point([currentPos.long , currentPos.lati]);
             const option = {units : "kilometers"};
             //asで関数をinportした場合、.defaultで呼び出す
-            const delta = calcDistance.default(from , to , option).toFixed(3);
-            setTotalDistance(totalDistance + delta);
+            const delta = calcDistance.default(from , to , option);
+            setTotalDistance((current) => {
+                if(delta >= 0.004)return current + delta;
+                return current;
+            });
+            
         }
     } , [currentPos , lastPos]);
 
