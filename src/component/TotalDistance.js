@@ -33,7 +33,7 @@ export const TotalDistance = (props)=>{
             {
                 enableHighAccuracy : true,
                 timeout : 5000,
-                maximumAge : 10000
+                maximumAge : 5000
             }
         );
         return () => navigator.geolocation.clearWatch(watchId);
@@ -47,7 +47,7 @@ export const TotalDistance = (props)=>{
             //asで関数をinportした場合、.defaultで呼び出す
             const delta = calcDistance.default(from , to , option);
             //GPSの誤差を防ぐため、4m以上の移動のみを計上する
-            delta >= 0.004 &&
+            delta >= 0.001 &&
                 setTotalDistance(totalDistance + delta);
         }
     } , [currentPos , lastPos]);
