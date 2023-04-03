@@ -2,6 +2,7 @@ import { useEffect, useState } from "react"
 import * as calcDistance from '@turf/distance';
 import * as helpers from '@turf/helpers';
 
+
 export const TotalDistance = (props)=>{
     
     const [totalDistance , setTotalDistance] = useState(0);
@@ -44,7 +45,9 @@ export const TotalDistance = (props)=>{
             const option = {units : "kilometers"};
             //asで関数をinportした場合、.defaultで呼び出す
             const delta = calcDistance.default(from , to , option);
-            setTotalDistance(totalDistance + delta);
+            //GPSの誤差を防ぐため、4m以上の移動のみを計上する
+            delta >= 0.004 &&
+                setTotalDistance(totalDistance + delta);
         }
     } , [currentPos , lastPos]);
 
@@ -59,3 +62,4 @@ export const TotalDistance = (props)=>{
         <div>現在の移動距離は、{totalDistance.toFixed(3)}kmです。</div>
     </div>
 }
+
