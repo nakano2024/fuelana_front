@@ -43,6 +43,7 @@ export const TotalDistance = (props)=>{
         
     };
 
+    //計測停止
     const stop = () => {
         navigator.geolocation.clearWatch(watchId);
         setWatchId(null);
@@ -65,18 +66,22 @@ export const TotalDistance = (props)=>{
 
 
     return<div>
-
-        {lastPos.long !== null && lastPos.lati !== null &&
-        <div>前回の経度 : {lastPos.long},前回の緯度 : {lastPos.lati}</div>}
-        
-        {currentPos.long !== null && currentPos.lati !== null &&
-        <div>現在の経度 : {currentPos.long},現在の緯度 : {currentPos.lati}</div>}
-        
-        <div>現在の移動距離は、{totalDistance.toFixed(3)}kmです。</div>
-
+        <div style={{"marginBottom" : "35px"}}>
+            {lastPos.long !== null && lastPos.lati !== null &&
+            <div>前回の経度 : {lastPos.long},前回の緯度 : {lastPos.lati}</div>}
+            
+            {currentPos.long !== null && currentPos.lati !== null &&
+            <div>現在の経度 : {currentPos.long},現在の緯度 : {currentPos.lati}</div>}
+            
+            <div>現在の移動距離は、{totalDistance.toFixed(3)}kmです。</div>
+        </div>
         <div>
-            <Button colorScheme={"red"} onClick={start} isDisabled={watchId !== null}>計測開始</Button>
-            <Button onClick={stop} isDisabled={watchId === null}>計測停止</Button>
+            <Button colorScheme={"red"} onClick={start} isDisabled={watchId !== null}>
+                計測開始
+            </Button>
+            <Button colorScheme={"blue"} onClick={stop} isDisabled={watchId === null}>
+                計測停止
+            </Button>
         </div>
     </div>
 }
