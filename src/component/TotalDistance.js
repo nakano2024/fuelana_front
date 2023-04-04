@@ -1,6 +1,7 @@
 import { useEffect, useState } from "react"
 import * as calcDistance from '@turf/distance';
 import * as helpers from '@turf/helpers';
+import { Button } from "@chakra-ui/react";
 
 
 
@@ -9,35 +10,45 @@ export const TotalDistance = (props)=>{
     const [totalDistance , setTotalDistance] = useState(0);
     const [lastPos , setLastPos] = useState({long : null , lati : null});
     const [currentPos , setCurrentPos] = useState({long : null , lati : null});
+    const [watchId , setWatchId] = useState(null); 
 
-    useEffect(() => {
+    const start = () => {
         //常に現在地を取得し続ける
-        const watchId = navigator.geolocation.watchPosition(
-            (pos) => {
-                if(pos.coords){
-                    const long = pos.coords.longitude;
-                    const lati = pos.coords.latitude;
-                    const newCurrent = {long , lati};
-                    setCurrentPos(pre => {
-                        //前回のcurrentPosがnull、つまり初回の場合は同じ値を入れる
-                        pre.long !== null && pre.lati !== null ?
-                            setLastPos(pre) : setLastPos(newCurrent);
-                        //また、新たなcurrentの値を返す
-                        return newCurrent;
-                    });
+        setWatchId(
+            navigator.geolocation.watchPosition(
+                (pos) => {
+                    if(pos.coords){
+                        const long = pos.coords.longitude;
+                        const lati = pos.coords.latitude;
+                        const newCurrent = {long , lati};
+                        setCurrentPos(pre => {
+                            //前回のcurrentPosがnull、つまり初回の場合は同じ値を入れる
+                            pre.long !== null && pre.lati !== null ?
+                                setLastPos(pre) : setLastPos(newCurrent);
+                            //また、新たなcurrentの値を返す
+                            return newCurrent;
+                        });
+                    }
+                },
+                (err) => {
+                    console.log(err);
+                },
+                {
+                    enableHighAccuracy : true,
+                    timeout : 5000,
+                    maximumAge : 1000
                 }
-            },
-            (err) => {
-                console.log(err);
-            },
-            {
-                enableHighAccuracy : true,
-                timeout : 5000,
-                maximumAge : 1000
-            }
+            )
         );
-        return () => navigator.geolocation.clearWatch(watchId);
-    }, []);
+        
+    };
+
+    const stop = () => {
+        navigator.geolocation.clearWatch(watchId);
+        const initPos = {long : null , lati : null};
+        setCurrentPos(initPos);
+        setLastPos(initPos);
+    }
 
     useEffect(() => {
         if(currentPos.long !== null && currentPos.lati !== null && lastPos.long !== null && lastPos.lati !== null){
@@ -53,6 +64,8 @@ export const TotalDistance = (props)=>{
 
 
     return<div>
+        <Button onClick={start}>計測開始</Button>
+        <Button onClick={stop}>計測停止</Button>
         {lastPos.long !== null && lastPos.lati !== null &&
         <div>前回の経度 : {lastPos.long},前回の緯度 : {lastPos.lati}</div>}
         
