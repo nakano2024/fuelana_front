@@ -50,6 +50,7 @@ export const TotalDistance = (props)=>{
         const initPos = {long : null , lati : null};
         setCurrentPos(initPos);
         setLastPos(initPos);
+        setTotalDistance(0);
     }
 
     useEffect(() => {
