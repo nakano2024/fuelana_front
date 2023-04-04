@@ -45,6 +45,7 @@ export const TotalDistance = (props)=>{
 
     const stop = () => {
         navigator.geolocation.clearWatch(watchId);
+        setWatchId(null);
         const initPos = {long : null , lati : null};
         setCurrentPos(initPos);
         setLastPos(initPos);
@@ -64,8 +65,7 @@ export const TotalDistance = (props)=>{
 
 
     return<div>
-        <Button onClick={start}>計測開始</Button>
-        <Button onClick={stop}>計測停止</Button>
+
         {lastPos.long !== null && lastPos.lati !== null &&
         <div>前回の経度 : {lastPos.long},前回の緯度 : {lastPos.lati}</div>}
         
@@ -73,6 +73,11 @@ export const TotalDistance = (props)=>{
         <div>現在の経度 : {currentPos.long},現在の緯度 : {currentPos.lati}</div>}
         
         <div>現在の移動距離は、{totalDistance.toFixed(3)}kmです。</div>
+
+        <div>
+            <Button colorScheme={"red"} onClick={start} isDisabled={watchId !== null}>計測開始</Button>
+            <Button onClick={stop} isDisabled={watchId === null}>計測停止</Button>
+        </div>
     </div>
 }
 
