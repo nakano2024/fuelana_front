@@ -1,8 +1,7 @@
-import { useEffect, useState } from "react"
-import * as calcDistance from '@turf/distance';
-import * as helpers from '@turf/helpers';
+import { useEffect, useState } from "react";
+import turf from "turf";
+import length from "@turf/length";
 import { Button } from "@chakra-ui/react";
-
 
 
 export const TotalDistance = (props)=>{
@@ -55,11 +54,14 @@ export const TotalDistance = (props)=>{
 
     useEffect(() => {
         if(currentPos.long !== null && currentPos.lati !== null && lastPos.long !== null && lastPos.lati !== null){
-            const from = helpers.point([lastPos.long , lastPos.lati]);
-            const to = helpers.point([currentPos.long , currentPos.lati]);
+            //座標をセットする
+            const line = turf.lineString([
+                [lastPos.long , lastPos.lati],
+                [currentPos.long , currentPos.lati]
+            ]);
             const option = {units : "kilometers"};
             //asで関数をinportした場合、.defaultで呼び出す
-            const delta = calcDistance.default(from , to , option);
+            const delta = length(line , option);
             //GPSによる誤差を防ぐため4m以上10m以下の移動距離を計上する
             setTotalDistance((preDis) => 0.004 <= delta && delta <= 0.015 ? preDis + delta : preDis);
         }
