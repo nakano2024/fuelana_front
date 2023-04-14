@@ -63,7 +63,7 @@ export const TotalDistance = (props)=>{
             //asで関数をinportした場合、.defaultで呼び出す
             const delta = length(line , option);
             //GPSによる誤差を防ぐため4m以上10m以下の移動距離を計上する
-            setTotalDistance((preDis) => 0.004 <= delta && delta <= 0.015 ? preDis + delta : preDis);
+            setTotalDistance((preDis) => 0.004 <= delta && delta <= 0.030 ? preDis + delta : preDis);
         }
     } , [currentPos , lastPos]);
 
