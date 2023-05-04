@@ -47,7 +47,9 @@ function App() {
               p = {"10px"}
             >
               {/*ここにメインコンテンツを置いていく*/}
-                
+                <Box>
+                  <TotalDistance />
+                </Box>
             </Flex>
 
           </Flex>
