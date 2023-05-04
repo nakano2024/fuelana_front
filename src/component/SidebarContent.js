@@ -18,7 +18,7 @@ export const SidebarContent = ()=>{
             borderTop={"1px solid gray"} 
             mt = {"16px"} 
             py={"10px"}
-            maxH = {isMobile? "450px" : "640px"}
+            maxH = {isMobile? "300px" : "640px"}
             overflow = {"scroll"}
         >
             <CarsIndex />
