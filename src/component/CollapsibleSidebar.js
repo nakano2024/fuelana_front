@@ -17,7 +17,7 @@ export const CollapsibleSidebar = () => {
         <OnClick.Provider value={onClose}>
             <Drawer isOpen = {isOpen} onClose = {onClose} placement = "left">
                 <DrawerOverlay>
-                    <DrawerContent bg={"gray.200"} px = {"3px"} pt = {"48px"}>
+                    <DrawerContent bg={"gray.200"} px = {"3px"} pt = {"40px"}>
                         <DrawerCloseButton />
                         <SidebarContent />
                     </DrawerContent>
