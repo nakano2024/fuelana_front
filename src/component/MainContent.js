@@ -1,5 +1,6 @@
 import { Box, Flex } from "@chakra-ui/react"
 import { useContext } from "react"
+import { Route, Routes } from "react-router-dom";
 import { IsMobile } from "../context"
 import { TotalDistance } from "./TotalDistance";
 
@@ -15,7 +16,7 @@ export const MainContent = () => {
         p = {"10px"}
     >
         <Box>
-            <TotalDistance />
+            
         </Box>
     </Flex>
 }
