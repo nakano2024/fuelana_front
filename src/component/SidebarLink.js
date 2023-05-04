@@ -1,13 +1,13 @@
 import { Button} from "@chakra-ui/react"
 import { useContext } from "react";
-import { Link, useNavigate } from "react-router-dom"
-import { OnClose } from "../context";
+import { useNavigate } from "react-router-dom"
+import { OnClick } from "../context";
 
 export const SidebarLink = (props) => {
 
     const navigate = useNavigate();
 
-    const drawerOnClose = useContext(OnClose);
+    const drawerOnClose = useContext(OnClick);
 
     const onClick = () => {
         navigate(props.to);

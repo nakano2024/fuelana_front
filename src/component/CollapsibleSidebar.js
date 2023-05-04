@@ -1,7 +1,7 @@
 import { Box, Button, Drawer, DrawerCloseButton, DrawerContent, DrawerOverlay, Flex, IconButton, ListIcon, MenuIcon } from "@chakra-ui/react"
 import { useState } from "react"
 import { FiMenu } from "react-icons/fi";
-import { OnClose } from "../context";
+import { OnClick } from "../context";
 import { SidebarContent } from "./SidebarContent";
 
 export const CollapsibleSidebar = () => {
@@ -14,7 +14,7 @@ export const CollapsibleSidebar = () => {
     
     return<Box>
         <IconButton icon={<FiMenu size={20}/>} onClick={()=> setIsOpen(true)} variant = {"ghost"}/>
-        <OnClose.Provider value={onClose}>
+        <OnClick.Provider value={onClose}>
             <Drawer isOpen = {isOpen} onClose = {onClose} placement = "left">
                 <DrawerOverlay>
                     <DrawerContent bg={"gray.200"} px = {"3px"} pt = {"48px"}>
@@ -23,6 +23,6 @@ export const CollapsibleSidebar = () => {
                     </DrawerContent>
                 </DrawerOverlay>
             </Drawer>
-        </OnClose.Provider>
+        </OnClick.Provider>
     </Box>
 }
