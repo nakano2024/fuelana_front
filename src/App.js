@@ -1,13 +1,11 @@
 import logo from './logo.svg';
 import './App.css';
-import { TotalDistance } from './component/TotalDistance';
-import { Box, ChakraProvider, Flex, Heading } from '@chakra-ui/react';
+import { ChakraProvider, Flex} from '@chakra-ui/react';
 import { useEffect, useState } from 'react';
 import { IsMobile } from './context';
-import { FixedSidebar } from './component/FixedSidebar';
-import { CollapsibleSidebar } from './component/CollapsibleSidebar';
-import { MobileHeader } from './component/MobileHeader';
 import { BrowserRouter } from 'react-router-dom';
+import { MainContent } from './component/MainContent';
+import { SidebarHeaderWrapper } from './component/SidebarHeaderWrapper';
 
 
 function App() {
@@ -28,29 +26,13 @@ function App() {
     <ChakraProvider>
       <IsMobile.Provider value = {isMobile}>
         <BrowserRouter>
-          <Flex className="App" fontSize={isMobile? "80%" : "100%"}>
+          <Flex 
+            className="App" 
+            fontSize={isMobile? "80%" : "100%"}
+          >
 
-            {isMobile ?
-              <div>
-                <MobileHeader/> 
-              </div>
-              : 
-              <div>
-                <FixedSidebar/>
-              </div>
-            }
-
-            <Flex 
-              mt = {isMobile ? "45px" : "0px"} 
-              flex = {1}
-              justifyContent = {"center"}
-              p = {"10px"}
-            >
-              {/*ここにメインコンテンツを置いていく*/}
-                <Box>
-                  <TotalDistance />
-                </Box>
-            </Flex>
+            <SidebarHeaderWrapper />
+            <MainContent />
 
           </Flex>
         </BrowserRouter>
