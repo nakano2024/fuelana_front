@@ -6,6 +6,7 @@ export const SidebarLink = (props) => {
     const navigate = useNavigate();
 
     return<Button 
+        py={"25px"}
         w={"100%"} 
         bg = {"transparent"}
         justifyContent = {"flex-start"}
