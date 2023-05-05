@@ -13,7 +13,7 @@ export const UserSettingPage = () => {
 
     return<Box>
         <Heading>ユーザー設定</Heading>
-        <Box textAlign={"left"} pt = {"100px"}>
+        <Box textAlign={"left"} pt = {"40px"}>
             {isMobile ? <UserInfoStack /> : <UserInfoTable />}
         </Box>
     </Box>
