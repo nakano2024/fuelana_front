@@ -1,18 +1,20 @@
-import { Box, Input, VStack, Text, FormLabel, FormControl, Textarea, Button, NumberInput, NumberInputField, NumberInputStepper, NumberIncrementStepper, NumberDecrementStepper } from "@chakra-ui/react"
+import { Box, Input, VStack, Text, FormLabel, FormControl, Textarea, Button, NumberInput, NumberInputField, NumberInputStepper, NumberIncrementStepper, NumberDecrementStepper, Select, RadioGroup, Radio, HStack } from "@chakra-ui/react"
 import { useState } from "react";
 
 export const CarAddForm = () =>{
 
     const [discription , setDiscription] = useState("");
+    const [fuelTypeName, setFuelTypeName] = useState("REGULAR");
     const [kilometersPerLiter, setKilometersPerLiter] = useState(0);
+
 
     const submitHandler = (event) => {
         event.preventDefault();
-        console.log(`${discription}、${kilometersPerLiter}`);
+        console.log(`${discription}、${fuelTypeName}、${kilometersPerLiter}`);
     }
 
     return<form>
-        <VStack spacing={7}>
+        <VStack spacing={10}>
 
             <FormControl id = {"discription"} maxWidth={"500px"}>
                 <FormLabel fontWeight={"bold"}>
@@ -25,7 +27,20 @@ export const CarAddForm = () =>{
                 />
             </FormControl>
 
-            <FormControl id = {"kilometersPerLiter"} maxWidth={"500px"}>
+            <FormControl id = {"fuel_type_name"} maxWidth={"500px"}>
+                <FormLabel fontWeight={"bold"}>
+                    油種
+                </FormLabel>
+                <RadioGroup onChange={setFuelTypeName} defaultValue={"REGULAR"}>
+                    <HStack spacing={5}>
+                        <Radio value="REGULAR">レギュラー</Radio>
+                        <Radio value="HIGH_OCTAN">ハイオク</Radio>
+                        <Radio value="DIESEL">軽油</Radio>
+                    </HStack>
+                </RadioGroup>
+            </FormControl>
+
+            <FormControl id = {"kilometers_per_Liter"} maxWidth={"500px"}>
                 <FormLabel fontWeight={"bold"}>
                     燃費（km/L）
                 </FormLabel>
