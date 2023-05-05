@@ -12,14 +12,14 @@ export const CarAddForm = () =>{
     }
 
     return<form>
-        <VStack spacing={10}>
+        <VStack spacing={7}>
 
             <FormControl id = {"discription"} maxWidth={"500px"}>
                 <FormLabel fontWeight={"bold"}>
-                    説明（車種や用途、特徴など）
+                    車種や用途、特徴など
                 </FormLabel>
                 <Textarea 
-                    h={"150px"} 
+                    h={"90px"} 
                     placeholder = {"例：赤いセダン、通勤用の自家用車"}
                     onChange = {(event) => setDiscription(event.target.value)}
                 />

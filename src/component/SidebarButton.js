@@ -1,5 +1,4 @@
 import { Button} from "@chakra-ui/react"
-import { BsEnvelope } from "react-icons/bs";
 
 export const SidebarButton = (props) => {
 
@@ -17,7 +16,6 @@ export const SidebarButton = (props) => {
         onClick = {onClick}
         color = {"gray.600"}
     >
-        
-        <BsEnvelope/>メールアドレス：
+        {props.children}
     </Button>
 }
