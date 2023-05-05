@@ -6,7 +6,7 @@ export const UserInfoStack = () => {
 
     const authenticatedUser = AuthenticatedGeneralUser.authenticatedUser;
 
-    return<VStack spacing={10} >
+    return<VStack spacing={5} >
         <HStack>
             <Text fontSize={"sm"} fontWeight={"bold"}>
                 ユーザー名：
