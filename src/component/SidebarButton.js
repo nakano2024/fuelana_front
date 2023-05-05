@@ -1,18 +1,10 @@
 import { Button} from "@chakra-ui/react"
-import { useContext } from "react";
 import { BsEnvelope } from "react-icons/bs";
-import { useNavigate } from "react-router-dom"
-import { OnClick } from "../context";
 
-export const SidebarLink = (props) => {
-
-    const navigate = useNavigate();
-
-    const drawerOnClose = useContext(OnClick);
+export const SidebarButton = (props) => {
 
     const onClick = () => {
-        navigate(props.to);
-        drawerOnClose();
+        props.onClick();
     }
 
     return<Button 
@@ -25,6 +17,7 @@ export const SidebarLink = (props) => {
         onClick = {onClick}
         color = {"gray.600"}
     >
-        {props.children}
+        
+        <BsEnvelope/>メールアドレス：
     </Button>
 }

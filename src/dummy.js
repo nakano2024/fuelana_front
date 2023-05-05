@@ -3,6 +3,7 @@ export const AuthenticatedGeneralUser = {
     "authenticatedUser" : {
         "userId" : "DjghrsrRggrHSJHF",
         "name" : "田中太郎",
+        "password" : "***********",
         "email" : "tanaka@gmail.com",
         "roleName" : "GENERAL",
     }
@@ -12,6 +13,7 @@ export const AuthenticatedAdminUser = {
     "authenticatedUser" :{
         "userId" : "rGErgdEJTRGHRfaF",
         "name" : "田中太郎",
+        "password" : "***********",
         "email" : "tanaka@gmail.com",
         "roleName" : "ADMIN",
     }

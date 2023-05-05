@@ -28,12 +28,10 @@ function App() {
         <BrowserRouter>
           <Flex 
             className="App" 
-            fontSize={isMobile? "80%" : "100%"}
+            fontSize={isMobile? "90%" : "100%"}
           >
-
             <SidebarHeaderWrapper />
             <MainContent />
-
           </Flex>
         </BrowserRouter>
       </IsMobile.Provider>

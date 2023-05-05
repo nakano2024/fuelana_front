@@ -10,7 +10,7 @@ export const UserProfileLink = () => {
     const [authUser , setAuthUser] = useState(AuthenticatedGeneralUser.authenticatedUser);
 
     return<Box>
-        <SidebarLink to = "/me">
+        <SidebarLink to = "/setting">
             <UserIcon/>&nbsp;&nbsp;{authUser !== null 
                 && authUser.name.length <= 6 ? authUser.name : authUser.name.substring(0, 6) + "..."}さん
         </SidebarLink>
