@@ -23,6 +23,7 @@ export const CarAddForm = () =>{
                 <Textarea 
                     h={"90px"} 
                     placeholder = {"例：赤いセダン、通勤用の自家用車"}
+                    value = {discription}
                     onChange = {(event) => setDiscription(event.target.value)}
                 />
             </FormControl>
@@ -31,7 +32,7 @@ export const CarAddForm = () =>{
                 <FormLabel fontWeight={"bold"}>
                     油種
                 </FormLabel>
-                <RadioGroup onChange={setFuelTypeName} defaultValue={"REGULAR"}>
+                <RadioGroup onChange={setFuelTypeName} value={fuelTypeName}>
                     <HStack spacing={5}>
                         <Radio value="REGULAR">レギュラー</Radio>
                         <Radio value="HIGH_OCTAN">ハイオク</Radio>
@@ -45,7 +46,10 @@ export const CarAddForm = () =>{
                     燃費（km/L）
                 </FormLabel>
                 <NumberInput min={0}>
-                    <NumberInputField onChange={(event) => setKilometersPerLiter(event.target.value)}/>
+                    <NumberInputField 
+                        onChange={(event) => setKilometersPerLiter(event.target.value)}
+                        value = {kilometersPerLiter}
+                    />
                     <NumberInputStepper>
                         <NumberIncrementStepper/>
                         <NumberDecrementStepper/>

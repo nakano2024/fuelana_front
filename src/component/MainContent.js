@@ -3,7 +3,7 @@ import { useContext } from "react"
 import { Route, Routes } from "react-router-dom";
 import { IsMobile } from "../context"
 import { CarAddPage } from "./CarAddPage";
-import { TotalDistance } from "./TotalDistance";
+import { CarDetailsPage } from "./CarDetailsPage";
 import { UserSettingPage } from "./UserSettingPage";
 
 
@@ -19,7 +19,7 @@ export const MainContent = () => {
     >
         <Routes>
             <Route path={"/cars/add"}  element={<CarAddPage />} />
-            <Route path={"/cars/:carId"} element={<TotalDistance />} />
+            <Route path={"/cars/:carId"} element={<CarDetailsPage/>} />
             <Route path={"/setting"} element={<UserSettingPage />}/>
         </Routes>   
     </Container>

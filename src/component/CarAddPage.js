@@ -1,12 +1,10 @@
 import { Box, Heading } from "@chakra-ui/react"
 import { CarAddForm } from "./CarAddForm"
+import { ContentWrapper } from "./ContentWrapper"
 
 
 export const CarAddPage = () => {
-    return<Box>
-        <Heading>新しい車の追加</Heading>
-        <Box pt = {"40px"}>
-            <CarAddForm />
-        </Box>
-    </Box>
+    return<ContentWrapper heading = {"新しい車の登録"}>
+        <CarAddForm />
+    </ContentWrapper>
 }

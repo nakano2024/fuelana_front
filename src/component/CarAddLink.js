@@ -5,7 +5,7 @@ import { SidebarLink } from "./SidebarLink"
 export const CarAddLink = () => {
     return<Box>
         <SidebarLink to = {"/cars/add"}>
-            <FiPlus/>&nbsp;&nbsp;新しい車の追加
+            <FiPlus/>&nbsp;&nbsp;新しい車の登録
         </SidebarLink>
     </Box>
 }
