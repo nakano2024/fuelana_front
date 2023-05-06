@@ -13,7 +13,7 @@ export const MainContent = () => {
 
     return<Container 
         maxW={"container.xl"}
-        pt = {isMobile ? "130px" : "30px"}
+        pt = {isMobile ? "150px" : "30px"}
         px = {"30px"}
         pb = {"30px"}
         color = {"gray.600"}
