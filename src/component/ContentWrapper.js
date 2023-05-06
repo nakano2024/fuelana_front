@@ -12,7 +12,9 @@ export const ContentWrapper = (props)=>{
            {props.heading}
         </Heading>
         <Divider/>
-        <Box mt={isMobile? "40px" : "100px"}>
+        <Box 
+            mt={isMobile? "40px" : "100px"}
+        >
             {props.children}
         </Box>
     </Box>
