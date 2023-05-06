@@ -3,6 +3,7 @@ import { IconBase } from "react-icons";
 import { BsFillEnvelopeFill, BsLockFill} from "react-icons/bs";
 import { FiMail } from "react-icons/fi";
 import { AuthenticatedAdminUser } from "../dummy";
+import { DataBox } from "./DataBox";
 import { UserIcon } from "./UserIcon";
 
 
@@ -10,7 +11,7 @@ export const UserInfoTable = () => {
 
     const authenticatedUser = AuthenticatedAdminUser.authenticatedUser;
 
-    return<Box border = {"1px solid"} borderColor={"gray.200"} borderRadius={"lg"} p = {"5px"}>
+    return<DataBox heading = {"基本情報"}>
         {authenticatedUser !== null &&
             <Table minH={"300px"}>
                 <Tbody>
@@ -49,5 +50,5 @@ export const UserInfoTable = () => {
                 </Tbody>
         </Table>
     }
-</Box>
+</DataBox>
 }

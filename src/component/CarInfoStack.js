@@ -1,5 +1,6 @@
 import { Divider, HStack, VStack, Text, Box, Heading } from "@chakra-ui/react"
 import { CarDetails } from "../dummy";
+import { DataBox } from "./DataBox";
 
 
 export const CarInfoStack = () => {
@@ -12,11 +13,9 @@ export const CarInfoStack = () => {
         if(fuelTypeName === "DIESEL")return <spa>軽油</spa>
     }
 
-    return<Box border = {"1px solid"} borderColor={"gray.200"} borderRadius={"lg"} p = {"5px"}>
-        <Heading size={"sm"}>基本情報</Heading>
-        <Divider />
+    return<DataBox heading = {"基本情報"}>
         {car !== null &&
-            <VStack spacing={5} pt = "30px">
+            <VStack spacing={5}>
                 <HStack>
                     <Text fontWeight={"bold"}>説明：</Text>
                     <Text>{car.discription}</Text>
@@ -38,5 +37,5 @@ export const CarInfoStack = () => {
                 <Divider />
             </VStack>
         }
-    </Box>
+    </DataBox>
 }

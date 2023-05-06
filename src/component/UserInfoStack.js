@@ -1,12 +1,13 @@
 import { Box, Stack, Icon, Text, VStack, Divider, HStack} from "@chakra-ui/react"
 import { AuthenticatedGeneralUser } from "../dummy"
 import { BsFillEnvelopeFill, BsLockFill} from "react-icons/bs";
+import { DataBox } from "./DataBox";
 
 export const UserInfoStack = () => {
 
     const authenticatedUser = AuthenticatedGeneralUser.authenticatedUser;
 
-    return<Box border = {"1px solid"} borderColor={"gray.200"} borderRadius={"lg"} p = {"5px"}>
+    return<DataBox heading = {"基本情報"}>
         {authenticatedUser !== null &&
             <VStack spacing={5} >
                 <HStack>
@@ -49,5 +50,5 @@ export const UserInfoStack = () => {
                 <Divider/>
             </VStack>
         }
-    </Box>
+    </DataBox>
 }

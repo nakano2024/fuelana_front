@@ -1,5 +1,6 @@
 import { Box, Divider, Heading, Table, Tbody, Td, Th, Tr } from "@chakra-ui/react"
 import { CarDetails } from "../dummy";
+import { DataBox } from "./DataBox";
 
 
 export const CarInfoTable = () => {
@@ -12,13 +13,10 @@ export const CarInfoTable = () => {
         if(fuelTypeName === "DIESEL")return <spa>軽油</spa>
     }
 
-    return<Box border = {"1px solid"} borderColor={"gray.200"} borderRadius={"lg"} p = {"5px"}>
-        <Heading size={"md"}>基本情報</Heading>
-        <Divider />
+    return<DataBox heading = {"基本情報"}>
         {car !== null &&
             <Table variant={"simple"} minH = "250px">
                 <Tbody>
-
                     <Tr>
                         <Th>
                             説明：
@@ -48,5 +46,5 @@ export const CarInfoTable = () => {
                 </Tbody>
             </Table>
         }
-    </Box>
+    </DataBox>
 }
