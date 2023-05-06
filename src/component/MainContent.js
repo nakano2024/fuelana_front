@@ -13,11 +13,11 @@ export const MainContent = () => {
 
     return<Container 
         maxW={"container.xl"}
-        pt = {isMobile ? "170px" : "40px"}
+        pt = {isMobile ? "130px" : "30px"}
         px = {"30px"}
         pb = {"30px"}
         color = {"gray.600"}
-        mb = {isMobile ? "500px" : "200px"}
+        mb = {isMobile ? "400px" : "50px"}
     >
         <Routes>
             <Route path={"/cars/add"}  element={<CarAddPage />} />
