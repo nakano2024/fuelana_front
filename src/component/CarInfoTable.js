@@ -12,7 +12,7 @@ export const CarInfoTable = () => {
         if(fuelTypeName === "DIESEL")return <spa>軽油</spa>
     }
 
-    return<Box>
+    return<Box border = {"1px solid"} borderColor={"gray.200"} borderRadius={"lg"} p = {"5px"}>
         <Heading size={"md"}>基本情報</Heading>
         <Divider />
         {car !== null &&

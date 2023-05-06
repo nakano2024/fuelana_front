@@ -10,40 +10,44 @@ export const UserInfoTable = () => {
 
     const authenticatedUser = AuthenticatedAdminUser.authenticatedUser;
 
-    return<Table minH={"300px"}>
-        <Tbody>
-            <Tr>
-                <Th>
-                    ユーザー名：
-                </Th>
-                <Td>
-                    {authenticatedUser.name}
-                </Td>
-            </Tr>
-            <Tr>
-                <Th>
-                    <Icon as={BsFillEnvelopeFill} mr = {"3px"}/>
-                    メールアドレス：
-                </Th>
-                <Td>
-                    {authenticatedUser.email}
-                </Td>
-            </Tr>
-            <Tr>
-                <Th>
-                    <Icon as= {BsLockFill} mr = {"3px"}/>
-                    パスワード：
-                </Th>
-                <Td>
-                    {authenticatedUser.password}
-                </Td>
-            </Tr>
-            <Tr>
-                <Th>ユーザータイプ：</Th>
-                <Td>
-                    {authenticatedUser.roleName === "ADMIN" ? "管理者ユーザー" : "一般ユーザー"}
-                </Td>
-            </Tr>
-        </Tbody>
-</Table>
+    return<Box border = {"1px solid"} borderColor={"gray.200"} borderRadius={"lg"} p = {"5px"}>
+        {authenticatedUser !== null &&
+            <Table minH={"300px"}>
+                <Tbody>
+                    <Tr>
+                        <Th>
+                            ユーザー名：
+                        </Th>
+                        <Td>
+                            {authenticatedUser.name}
+                        </Td>
+                    </Tr>
+                    <Tr>
+                        <Th>
+                            <Icon as={BsFillEnvelopeFill} mr = {"3px"}/>
+                            メールアドレス：
+                        </Th>
+                        <Td>
+                            {authenticatedUser.email}
+                        </Td>
+                    </Tr>
+                    <Tr>
+                        <Th>
+                            <Icon as= {BsLockFill} mr = {"3px"}/>
+                            パスワード：
+                        </Th>
+                        <Td>
+                            {authenticatedUser.password}
+                        </Td>
+                    </Tr>
+                    <Tr>
+                        <Th>ユーザータイプ：</Th>
+                        <Td>
+                            {authenticatedUser.roleName === "ADMIN" ? "管理者ユーザー" : "一般ユーザー"}
+                        </Td>
+                    </Tr>
+                </Tbody>
+        </Table>
+    }
+</Box>
 }

@@ -7,7 +7,6 @@ import { Readme } from "./Readme"
 export const CarAddPage = () => {
     return<Box>
         <Readme />
-
         <Box pt = "100px">
             <ContentWrapper heading = {"新しい車両の追加"}>
                 <CarAddForm />
