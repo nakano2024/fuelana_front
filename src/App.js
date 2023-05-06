@@ -1,11 +1,14 @@
 import logo from './logo.svg';
 import './App.css';
-import { ChakraProvider, Flex} from '@chakra-ui/react';
+import { Button, ChakraProvider, Flex} from '@chakra-ui/react';
 import { useEffect, useState } from 'react';
 import { IsMobile } from './context';
-import { BrowserRouter } from 'react-router-dom';
+import { BrowserRouter, Route, Routes } from 'react-router-dom';
 import { MainContent } from './component/MainContent';
 import { SidebarHeaderWrapper } from './component/SidebarHeaderWrapper';
+import { AuthCountent } from './component/AuthContent';
+import { UnauthContent } from './component/UnauthContent';
+import { AuthenticatedAdminUser } from './dummy';
 
 
 function App() {
@@ -22,17 +25,18 @@ function App() {
     window.addEventListener("resize" , changeIsMoble);
   }, []);
 
+  const [authenticatedUser, setAuthenticatedUser] = useState(null);
+
   return (
     <ChakraProvider>
       <IsMobile.Provider value = {isMobile}>
         <BrowserRouter>
-          <Flex 
+          <div
             className="App" 
             fontSize={isMobile? "90%" : "100%"}
           >
-            <SidebarHeaderWrapper />
-            <MainContent />
-          </Flex>
+            <AuthCountent />
+          </div>
         </BrowserRouter>
       </IsMobile.Provider>
     </ChakraProvider>

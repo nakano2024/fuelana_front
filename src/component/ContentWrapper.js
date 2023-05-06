@@ -8,7 +8,7 @@ export const ContentWrapper = (props)=>{
     const isMobile = useContext(IsMobile);
 
     return<Box>
-        <Heading size={isMobile? "md" : "lg"}>
+        <Heading size={"md"} >
            {props.heading}
         </Heading>
         <Divider/>
