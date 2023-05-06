@@ -16,6 +16,7 @@ export const MainContent = () => {
         mt = {isMobile ? "45px" : "0px"}
         p = {"30px"}
         color = {"gray.600"}
+        pb = {isMobile ? "400px" : "200px"}
     >
         <Routes>
             <Route path={"/cars/add"}  element={<CarAddPage />} />
