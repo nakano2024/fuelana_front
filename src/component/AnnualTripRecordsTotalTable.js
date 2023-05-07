@@ -5,6 +5,8 @@ import { DataBox } from "./DataBox"
 
 export const AnnualTripRecordsTotalTable = ()=>{
 
+    const year = 2023;
+
     const annualTotal = AnnualTripRecordsTotal.annualTotal;
 
     return<DataBox isHeadingInvalid = {true}>
@@ -12,7 +14,7 @@ export const AnnualTripRecordsTotalTable = ()=>{
             <Table>
                 <Tbody>
                     <Td fontWeight={"bold"}>
-                        通年合計燃料費
+                        {year}年度の通年合計：
                     </Td>
                     <Td color={"red"} fontSize = {"30px"}>
                         ¥{annualTotal.grandTotalYen}

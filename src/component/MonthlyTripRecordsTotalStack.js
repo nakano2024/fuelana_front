@@ -13,7 +13,7 @@ export const MonthlyTripRecordsTotalStack = () => {
         {monthlyTotal !== null &&
             <HStack spacing={5}>
                 <Text fontWeight={"bold"}>
-                    月別合計燃料費：
+                    {month}月の月間合計：
                 </Text>
                 <Text color={"red"} fontSize = {"30px"}>
                     ¥{monthlyTotal.grandTotalYen.toFixed(1)}

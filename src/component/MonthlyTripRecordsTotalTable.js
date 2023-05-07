@@ -13,7 +13,7 @@ export const MonthlyTripRecordsTotalTable = () => {
         <Tbody>
             <Tr>
                 <Td fontWeight={"bold"}>
-                    月別合計燃料費：
+                    {month}月の月間合計：
                 </Td>
                 <Td color={"red"} fontSize = {"30px"}>
                     ¥{monthlyTotal.grandTotalYen.toFixed(1)}

@@ -9,6 +9,7 @@ import { TotalDistance } from "./TotalDistance";
 import { MonthlyTripRecordsDataBox } from "./MonthlyTripRecordsDataBox";
 import { AnnualTripRecordsTotalTable } from "./AnnualTripRecordsTotalTable";
 import { AnnualTripRecordsTotalStack } from "./AnnualTripRecordsTotalStack";
+import { TripRecordDataContainer } from "./TripRecordDataContainer";
 
 
 export const CarDetailsPage = () => {
@@ -25,12 +26,8 @@ export const CarDetailsPage = () => {
                     {isMobile ?<CarInfoStack />:<CarInfoTable />}
                 </Box>
 
-                <Box pt={"65px"}>
-                    <MonthlyTripRecordsDataBox />
-                </Box>
-
-                <Box pt={"65px"}>
-                    {isMobile ?<AnnualTripRecordsTotalStack /> : <AnnualTripRecordsTotalTable />}
+                <Box pt = {"65px"}>
+                    <TripRecordDataContainer />
                 </Box>
 
             </ContentWrapper>
