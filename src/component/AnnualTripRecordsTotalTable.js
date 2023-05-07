@@ -14,7 +14,7 @@ export const AnnualTripRecordsTotalTable = ()=>{
             <Table>
                 <Tbody>
                     <Td fontWeight={"bold"}>
-                        {year}年の通年合計：
+                        {year}年度合計：
                     </Td>
                     <Td color={"red"} fontSize = {"25px"}>
                         ¥{annualTotal.grandTotalYen.toFixed(0)}
