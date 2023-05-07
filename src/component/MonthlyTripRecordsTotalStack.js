@@ -15,8 +15,8 @@ export const MonthlyTripRecordsTotalStack = () => {
                 <Text fontWeight={"bold"}>
                     {month}月の月間合計：
                 </Text>
-                <Text color={"red"} fontSize = {"30px"}>
-                    ¥{monthlyTotal.grandTotalYen.toFixed(1)}
+                <Text color={"red"} fontSize = {"25px"}>
+                    ¥{monthlyTotal.grandTotalYen.toFixed(0)}
                 </Text>
             </HStack>
         }

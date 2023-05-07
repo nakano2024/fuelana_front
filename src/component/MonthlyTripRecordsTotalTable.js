@@ -15,8 +15,8 @@ export const MonthlyTripRecordsTotalTable = () => {
                 <Td fontWeight={"bold"}>
                     {month}月の月間合計：
                 </Td>
-                <Td color={"red"} fontSize = {"30px"}>
-                    ¥{monthlyTotal.grandTotalYen.toFixed(1)}
+                <Td color={"red"} fontSize = {"25px"}>
+                    ¥{monthlyTotal.grandTotalYen.toFixed(0)}
                 </Td>
             </Tr>
         </Tbody>

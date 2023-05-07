@@ -261,7 +261,7 @@ export const MonthlyTripRecords = {
     ],
 
     "monthlyTotal" : {
-        "grandTotalYen" : 25.6,
+        "grandTotalYen" : 430000,
         "grandTotalLiter" : 1.0,
         "grandTotalKilometers" : 16.0 
     }
@@ -270,7 +270,7 @@ export const MonthlyTripRecords = {
 
 export const AnnualTripRecordsTotal = {
     "annualTotal" : {
-        "grandTotalYen" : 25.6,
+        "grandTotalYen" : 430000,
         "grandTotalLiter" : 1.0,
         "grandTotalKilometers" : 16.0 
     }

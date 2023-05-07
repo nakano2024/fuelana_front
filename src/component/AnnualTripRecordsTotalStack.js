@@ -16,8 +16,8 @@ export const AnnualTripRecordsTotalStack = () => {
                     <Text fontWeight={"bold"}>
                         {year}年度の通年合計：
                     </Text>
-                    <Text color={"red"} fontSize = {"30px"}>
-                        ¥{annualTotal.grandTotalYen}
+                    <Text color={"red"} fontSize = {"25px"}>
+                        ¥{annualTotal.grandTotalYen.toFixed(0)}
                     </Text>
                 </HStack>
             </VStack>
