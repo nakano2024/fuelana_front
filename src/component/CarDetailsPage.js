@@ -6,6 +6,9 @@ import { CarInfoStack } from "./CarInfoStack";
 import { CarInfoTable } from "./CarInfoTable";
 import { ContentWrapper } from "./ContentWrapper";
 import { TotalDistance } from "./TotalDistance";
+import { MonthlyTripRecordsDataBox } from "./MonthlyTripRecordsDataBox";
+import { AnnualTripRecordsTotalTable } from "./AnnualTripRecordsTotalTable";
+import { AnnualTripRecordsTotalStack } from "./AnnualTripRecordsTotalStack";
 
 
 export const CarDetailsPage = () => {
@@ -17,11 +20,19 @@ export const CarDetailsPage = () => {
     return<Box>
         {car !== null &&
             <ContentWrapper heading = {car.discription}>
-                {isMobile ?
-                    <CarInfoStack />
-                :
-                    <CarInfoTable />
-                }
+
+                <Box>
+                    {isMobile ?<CarInfoStack />:<CarInfoTable />}
+                </Box>
+
+                <Box pt={"65px"}>
+                    <MonthlyTripRecordsDataBox />
+                </Box>
+
+                <Box pt={"65px"}>
+                    {isMobile ?<AnnualTripRecordsTotalStack /> : <AnnualTripRecordsTotalTable />}
+                </Box>
+
             </ContentWrapper>
         }
     </Box>

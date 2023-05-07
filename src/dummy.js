@@ -146,6 +146,118 @@ export const MonthlyTripRecords = {
             "totalKilometers" : 10.0,
             "createdAt" : "2023/05/06 10:30:00"
         },
+        {
+            "tripRecordId" : "GdhrYsaWghrdS",
+            "purposeName" : "BUSINESS",
+            "totalYen" : 5.3,
+            "totalLiter" : 0.5,  
+            "totalKilometers" : 6.0,
+            "createdAt" : "2023/05/04 09:37:00"
+        },
+        {
+            "tripRecordId" : "HdYrsweGghsehf",
+            "purposeName" : "PRIVATE",
+            "totalYen" : 20.3,
+            "totalLiter" : 0.5,  
+            "totalKilometers" : 10.0,
+            "createdAt" : "2023/05/06 10:30:00"
+        },
+        {
+            "tripRecordId" : "GdhrYsaWghrdS",
+            "purposeName" : "BUSINESS",
+            "totalYen" : 5.3,
+            "totalLiter" : 0.5,  
+            "totalKilometers" : 6.0,
+            "createdAt" : "2023/05/04 09:37:00"
+        },
+        {
+            "tripRecordId" : "HdYrsweGghsehf",
+            "purposeName" : "PRIVATE",
+            "totalYen" : 20.3,
+            "totalLiter" : 0.5,  
+            "totalKilometers" : 10.0,
+            "createdAt" : "2023/05/06 10:30:00"
+        },
+        {
+            "tripRecordId" : "GdhrYsaWghrdS",
+            "purposeName" : "BUSINESS",
+            "totalYen" : 5.3,
+            "totalLiter" : 0.5,  
+            "totalKilometers" : 6.0,
+            "createdAt" : "2023/05/04 09:37:00"
+        },
+        {
+            "tripRecordId" : "HdYrsweGghsehf",
+            "purposeName" : "PRIVATE",
+            "totalYen" : 20.3,
+            "totalLiter" : 0.5,  
+            "totalKilometers" : 10.0,
+            "createdAt" : "2023/05/06 10:30:00"
+        },
+        {
+            "tripRecordId" : "GdhrYsaWghrdS",
+            "purposeName" : "BUSINESS",
+            "totalYen" : 5.3,
+            "totalLiter" : 0.5,  
+            "totalKilometers" : 6.0,
+            "createdAt" : "2023/05/04 09:37:00"
+        },
+        {
+            "tripRecordId" : "HdYrsweGghsehf",
+            "purposeName" : "PRIVATE",
+            "totalYen" : 20.3,
+            "totalLiter" : 0.5,  
+            "totalKilometers" : 10.0,
+            "createdAt" : "2023/05/06 10:30:00"
+        },
+        {
+            "tripRecordId" : "GdhrYsaWghrdS",
+            "purposeName" : "BUSINESS",
+            "totalYen" : 5.3,
+            "totalLiter" : 0.5,  
+            "totalKilometers" : 6.0,
+            "createdAt" : "2023/05/04 09:37:00"
+        },
+        {
+            "tripRecordId" : "HdYrsweGghsehf",
+            "purposeName" : "PRIVATE",
+            "totalYen" : 20.3,
+            "totalLiter" : 0.5,  
+            "totalKilometers" : 10.0,
+            "createdAt" : "2023/05/06 10:30:00"
+        },
+        {
+            "tripRecordId" : "GdhrYsaWghrdS",
+            "purposeName" : "BUSINESS",
+            "totalYen" : 5.3,
+            "totalLiter" : 0.5,  
+            "totalKilometers" : 6.0,
+            "createdAt" : "2023/05/04 09:37:00"
+        },
+        {
+            "tripRecordId" : "HdYrsweGghsehf",
+            "purposeName" : "PRIVATE",
+            "totalYen" : 20.3,
+            "totalLiter" : 0.5,  
+            "totalKilometers" : 10.0,
+            "createdAt" : "2023/05/06 10:30:00"
+        },
+        {
+            "tripRecordId" : "GdhrYsaWghrdS",
+            "purposeName" : "BUSINESS",
+            "totalYen" : 5.3,
+            "totalLiter" : 0.5,  
+            "totalKilometers" : 6.0,
+            "createdAt" : "2023/05/04 09:37:00"
+        },
+        {
+            "tripRecordId" : "HdYrsweGghsehf",
+            "purposeName" : "PRIVATE",
+            "totalYen" : 20.3,
+            "totalLiter" : 0.5,  
+            "totalKilometers" : 10.0,
+            "createdAt" : "2023/05/06 10:30:00"
+        },
     ],
 
     "monthlyTotal" : {

@@ -7,10 +7,14 @@ export const DataBox = (props) => {
         borderRadius={"lg"} p = {"5px"}
         boxShadow={"md"}
     >
-        <Heading size={"sm"} py = {"10px"}>
-            {props.heading}
-        </Heading>
-        <Divider />
+        {!props.isHeadingInvalid && 
+            <div>
+                <Heading size={"sm"} py = {"10px"}>
+                    {props.heading}
+                </Heading>
+                <Divider />
+            </div>
+        }
         <Box pt = "30px">
             {props.children}
         </Box>
