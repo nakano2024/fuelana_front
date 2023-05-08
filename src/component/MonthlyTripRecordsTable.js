@@ -1,9 +1,14 @@
 import { Box, Table, Tbody, Td, Thead, Tr ,Text, Th, Heading } from "@chakra-ui/react"
+import { useContext } from "react"
+import { IsMobile } from "../context"
 import { AnnualTripRecordsTotal, MonthlyTripRecords } from "../dummy"
 import { DataBox } from "./DataBox"
 
 
+
 export const MonthlyTripRecordsTable= () => {
+
+    const isMobile = useContext(IsMobile);
 
     const month = 5;
 
@@ -12,9 +17,12 @@ export const MonthlyTripRecordsTable= () => {
     return<Box>
         {monthlyTripRecords !== null &&
             <Box overflowX={"scroll"} pt = {"25px"} pb = {"60px"}>
-                <Table variant={"simple"} size={"sm"} minW = {"700px"}>
+                <Table variant={"simple"} size={"sm"} minW = {isMobile ? "450px" : "700px"}>
                     <Thead>
                         <Tr>
+                            <Th>
+                                
+                            </Th>
                             <Th>
                                 燃料費
                             </Th>
@@ -32,6 +40,9 @@ export const MonthlyTripRecordsTable= () => {
                     <Tbody>
                         {monthlyTripRecords.tripRecords.map((tr) => {
                             return<Tr>
+                                <Td>
+                                    del
+                                </Td>
                                 <Td color={"red"}>
                                     ¥{tr.totalYen.toFixed(1)}
                                 </Td>
