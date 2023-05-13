@@ -34,6 +34,9 @@ export const MonthlyTripRecordsTable= () => {
                                 
                             </Th>
                             <Th>
+                                記録日時
+                            </Th>
+                            <Th>
                                 燃料費
                             </Th>
                             <Th>
@@ -45,9 +48,6 @@ export const MonthlyTripRecordsTable= () => {
                             <Th>
                                 使用目的
                             </Th>
-                            <Th>
-                                記録日時
-                            </Th>
                         </Tr>
                     </Thead>
                     <Tbody>
@@ -55,6 +55,9 @@ export const MonthlyTripRecordsTable= () => {
                             return<Tr>
                                 <Td>
                                     
+                                </Td>
+                                <Td>
+                                    {tr.createdAt}
                                 </Td>
                                 <Td color={"red"}>
                                     ¥{tr.totalYen.toFixed(1)}
@@ -67,9 +70,6 @@ export const MonthlyTripRecordsTable= () => {
                                 </Td>
                                 <Td>
                                     {getPurposeNameElement(tr.purposeName)}
-                                </Td>
-                                <Td>
-                                    {tr.createdAt}
                                 </Td>
                             </Tr>
                         })}
