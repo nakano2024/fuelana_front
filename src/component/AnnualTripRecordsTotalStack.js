@@ -1,26 +1,28 @@
-import { HStack, Stack, Table, Tbody, Td, VStack, Text } from "@chakra-ui/react"
+import { HStack, Stack, Table, Tbody, Td, VStack, Text, Divider } from "@chakra-ui/react"
+import { useContext } from "react";
+import { Year } from "../context";
 import { AnnualTripRecordsTotal } from "../dummy"
 import { DataBox } from "./DataBox"
+import { YearMonthNotSelected } from "./YearMonthNotSelected";
 
 
 export const AnnualTripRecordsTotalStack = () => {
 
-    const year = 2023;
+    const year = useContext(Year);
 
     const annualTotal = AnnualTripRecordsTotal.annualTotal;
 
-    return<DataBox isHeadingInvalid = {true}>
+    return<VStack>
         {annualTotal !== null &&
-            <VStack>
-                <HStack>
-                    <Text fontWeight={"bold"}>
-                        {year}年度合計：
-                    </Text>
-                    <Text color={"red"} fontSize = {"25px"}>
-                        ¥{annualTotal.grandTotalYen.toLocaleString()}
-                    </Text>
-                </HStack>
-            </VStack>
+            <HStack>    
+                <Text fontWeight={"bold"}>
+                    {year}年度合計：
+                </Text>
+                <Text color={"red"} fontSize = {"25px"}>
+                    ¥{annualTotal.grandTotalYen.toLocaleString()}
+                </Text>
+            </HStack>
         }
-    </DataBox>
+        <Divider />
+    </VStack>
 }

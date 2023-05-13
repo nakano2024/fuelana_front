@@ -236,7 +236,7 @@ export const MonthlyTripRecords = {
         },
         {
             "tripRecordId" : "HdYrsweGghsehf",
-            "purposeName" : "PRIVATE",
+            "purposeName" : "BUSINESS",
             "totalYen" : 20.3,
             "totalLiter" : 0.5,  
             "totalKilometers" : 10.0,
