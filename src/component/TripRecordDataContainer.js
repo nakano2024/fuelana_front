@@ -25,8 +25,6 @@ export const TripRecordDataContainer = () => {
     }
 
     return<Box>
-            <Divider />
-
             <VStack pt={"25px"}>
                 <HStack spacing={5}>
                     <Button 

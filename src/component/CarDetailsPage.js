@@ -5,12 +5,12 @@ import { CarDetails } from "../dummy"
 import { CarInfoStack } from "./CarInfoStack";
 import { CarInfoTable } from "./CarInfoTable";
 import { ContentWrapper } from "./ContentWrapper";
-import { TotalDistance } from "./TotalDistance";
 import { MonthlyTripRecordsDataBox } from "./MonthlyTripRecordsDataBox";
 import { AnnualTripRecordsTotalTable } from "./AnnualTripRecordsTotalTable";
 import { AnnualTripRecordsTotalStack } from "./AnnualTripRecordsTotalStack";
 import { TripRecordDataContainer } from "./TripRecordDataContainer";
-
+import { DataBox } from "./DataBox";
+import { DistanceCalculatorPopup } from "./DistanceCalculatorPopup";
 
 export const CarDetailsPage = () => {
 
@@ -21,15 +21,21 @@ export const CarDetailsPage = () => {
     return<Box>
         {car !== null &&
             <ContentWrapper heading = {car.discription}>
+                {isMobile &&
+                    <Box mb = {"36px"}>
+                        <DistanceCalculatorPopup />
+                    </Box>
+                }
 
-                <Box>
+                <Box mb = {"36px"}>
                     {isMobile ?<CarInfoStack />:<CarInfoTable />}
                 </Box>
 
-                <Box pt = {"65px"}>
+                <Divider />
+
+                <Box mb = {"36px"}>
                     <TripRecordDataContainer />
                 </Box>
-
             </ContentWrapper>
         }
     </Box>

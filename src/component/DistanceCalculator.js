@@ -4,7 +4,7 @@ import length from "@turf/length";
 import { Button } from "@chakra-ui/react";
 
 
-export const TotalDistance = (props)=>{
+export const DistanceCalculator = (props) => {
     
     const [totalDistance , setTotalDistance] = useState(0);
     const [lastPos , setLastPos] = useState({long : null , lati : null});
@@ -22,8 +22,8 @@ export const TotalDistance = (props)=>{
                         const newCurrent = {long , lati};
                         setCurrentPos(pre => {
                             //前回のcurrentPosがnull、つまり初回の場合は同じ値を入れる
-                            pre.long !== null && pre.lati !== null ?
-                                setLastPos(pre) : setLastPos(newCurrent);
+                            pre.long === null && pre.lati === null ?
+                                setLastPos(newCurrent) : setLastPos(pre)
                             //また、新たなcurrentの値を返す
                             return newCurrent;
                         });
