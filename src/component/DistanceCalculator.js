@@ -1,26 +1,30 @@
 import { useContext, useEffect, useState } from "react";
 import turf from "turf";
 import length from "@turf/length";
-import { Box, Button } from "@chakra-ui/react";
+import { Box, Button, FormControl, HStack, Radio, RadioGroup, VStack } from "@chakra-ui/react";
 import { OnClick } from "../context";
-
 
 export const DistanceCalculator = (props) => {
     const [totalDistance, setTotalDistance] = useState(0);
-    const [lastPos, setLastPos] = useState({long : null , lati : null});
-    const [currentPos, setCurrentPos] = useState({long : null , lati : null});
+    const BUSINESS = "BUSINESS";
+    const PRIVATE = "PRIVATE";
+    const [purposeName, setPurposeName] = useState(BUSINESS);
+
+    const [lastPos, setLastPos] = useState({long : null, lati : null});
+    const [currentPos, setCurrentPos] = useState({long : null, lati : null});
     const [watchId, setWatchId] = useState(null); 
     const onClose = useContext(OnClick); 
-    const init = "init"
-    const processing = "processing"
-    const finished = "finished"
-    const [status, setStatus] = useState(init);
+
+    const INIT = "INIT"
+    const PROCESSING = "PROCESSING"
+    const FINISHED = "FINISHED"
+    const [status, setStatus] = useState(INIT);
 
     const start = () => {
         //常に現在地を取得し続ける
         setWatchId(() => {
             //ステータスを同期的にprocessingに変更
-            setStatus(processing);
+            setStatus(PROCESSING);
 
             //watchIdステートの値をセットする
             return navigator.geolocation.watchPosition(
@@ -48,20 +52,19 @@ export const DistanceCalculator = (props) => {
                 }
             )
         });
-        
     };
 
     //計測停止
     const stop = () => {
         setWatchId(watchId => {
             //状態を終了に移行させる
-            setStatus(finished);
+            setStatus(FINISHED);
 
             //位置情報の取得を停止する
             navigator.geolocation.clearWatch(watchId);
 
             //位置情報を初期化する
-            const initPos = {long : null , lati : null};
+            const initPos = {long : null, lati : null};
             setCurrentPos(initPos);
             setLastPos(initPos);
 
@@ -75,6 +78,13 @@ export const DistanceCalculator = (props) => {
         onClose();
     }
 
+    //データの破棄
+    const discard = () => {
+        const isComfirmed = window.confirm("本当に破棄しますか？");
+        isComfirmed && onClose();
+    } 
+
+    //距離の計算処理
     useEffect(() => {
         if(currentPos.long !== null && currentPos.lati !== null && lastPos.long !== null && lastPos.lati !== null){
             //座標をセットする
@@ -88,49 +98,78 @@ export const DistanceCalculator = (props) => {
             //GPSによる誤差を防ぐため4m以上10m以下の移動距離を計上する
             setTotalDistance((preDis) => 0.004 <= delta && delta <= 0.03 ? preDis + delta : preDis);
         }
-    } , [currentPos , lastPos]);
+    }, [currentPos , lastPos]);
 
-    return<div>
-        {(status === processing || status === finished) &&
-            <Box style={{"marginBottom" : "35px"}}>  
+    return<Box>
+        {(status === PROCESSING || status === FINISHED) &&
+            <VStack style={{"marginBottom" : "35px"}}>  
                 <Box mb = {"8px"}>
-                    {status === processing &&
-                        <Box>
+                    {status === PROCESSING &&
+                        <Box fontWeight = {"bold"}>
                             計測中です。
                         </Box>
                     }
 
-                    {status === finished &&
-                        <Box>
+                    {status === FINISHED &&
+                        <Box fontWeight = {"bold"}>
                             計測を終了しました。
                         </Box>
                     }
                 </Box>
 
-                <Box color = {"red"} fontSize = {"20px"}>
+                <Box color = {"red"} fontSize = {"20px"} fontWeight = {"bold"}>
                     走行距離 : {totalDistance.toFixed(3)}km
                 </Box>
-            </Box>
+            </VStack>
         }
 
-        {status === init &&
-            <Box>
-                <Button colorScheme = {"red"} onClick = {start} isDisabled = {status == processing}>
-                    計測開始
-                </Button>
-            </Box>
+        {status === INIT &&
+            <VStack>
+                <Box pb = {"32px"} fontWeight = {"bold"}>
+                    走行距離の計測を開始します。
+                </Box>
+
+                <Box pb = {"32px"}>
+                    <Button 
+                        colorScheme = {"red"} 
+                        onClick = {start} 
+                        isDisabled = {status == PROCESSING}
+                    >
+                        計測開始
+                    </Button>
+                </Box>
+
+                <Box>
+                    <RadioGroup 
+                        onChange = {setPurposeName}
+                        value = {purposeName}
+                    >
+                        <HStack spacing={5}>
+                            <span>用途 : </span>
+
+                            <Radio value={BUSINESS}>
+                                <Box fontWeight = {"bold"}>業務</Box>
+                            </Radio>
+
+                            <Radio value={PRIVATE}>
+                                <Box fontWeight = {"bold"}>プライベート</Box>
+                            </Radio>
+                        </HStack>
+                    </RadioGroup>
+                </Box>
+            </VStack>
         }
 
-        {status === processing &&
-            <Box>
-                <Button colorScheme = {"blue"} onClick = {stop} isDisabled = {status == finished}>
+        {status === PROCESSING &&
+            <VStack>
+                <Button colorScheme = {"blue"} onClick = {stop} isDisabled = {status == FINISHED}>
                     計測終了
                 </Button>
-            </Box>
+            </VStack>
         }
 
-        {status === finished &&
-            <Box>
+        {status === FINISHED &&
+            <VStack>
                 <Box mb = {"8px"}>
                     <Button colorScheme = {"green"} onClick = {save}>
                         保存する
@@ -138,12 +177,11 @@ export const DistanceCalculator = (props) => {
                 </Box>
 
                 <Box>
-                    <Button colorScheme = {"red"} onClick = {onClose}>
+                    <Button colorScheme = {"red"} onClick = {discard}>
                         破棄する
                     </Button>
                 </Box>
-            </Box>
+            </VStack>
         }
-    </div>
+    </Box>
 }
-
