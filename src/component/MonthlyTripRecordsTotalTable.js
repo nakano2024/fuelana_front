@@ -16,7 +16,7 @@ export const MonthlyTripRecordsTotalTable = () => {
         <Tbody>
             <Tr>
                 <Td fontWeight={"bold"}>
-                    {month}月合計：
+                    {year}年{month}月合計：
                 </Td>
                 <Td color={"red"} fontSize = {"25px"}>
                     ¥{monthlyTotal.grandTotalYen.toLocaleString()}

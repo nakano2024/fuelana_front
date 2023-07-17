@@ -13,7 +13,6 @@ import { DataBox } from "./DataBox";
 import { DistanceCalculatorPopup } from "./DistanceCalculatorPopup";
 
 export const CarDetailsPage = () => {
-
     const isMobile = useContext(IsMobile);
 
     const car = CarDetails.car;

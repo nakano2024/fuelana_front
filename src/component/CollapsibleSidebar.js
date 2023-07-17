@@ -5,7 +5,6 @@ import { OnClick } from "../context";
 import { SidebarContent } from "./SidebarContent";
 
 export const CollapsibleSidebar = () => {
-    
     const [isOpen, setIsOpen] = useState(false);
 
     const onClose = () => {
