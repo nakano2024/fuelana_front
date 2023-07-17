@@ -5,6 +5,8 @@ import { Box, Button, FormControl, HStack, Radio, RadioGroup, VStack } from "@ch
 import { OnClick } from "../context";
 
 export const DistanceCalculator = (props) => {
+    const onClose = useContext(OnClick); 
+
     const [totalDistance, setTotalDistance] = useState(0);
     const BUSINESS = "BUSINESS";
     const PRIVATE = "PRIVATE";
@@ -13,7 +15,6 @@ export const DistanceCalculator = (props) => {
     const [lastPos, setLastPos] = useState({long : null, lati : null});
     const [currentPos, setCurrentPos] = useState({long : null, lati : null});
     const [watchId, setWatchId] = useState(null); 
-    const onClose = useContext(OnClick); 
 
     const INIT = "INIT"
     const PROCESSING = "PROCESSING"
