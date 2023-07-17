@@ -1,6 +1,7 @@
 import { Box, Button, HStack, IconButton, Modal, ModalBody, ModalContent, ModalFooter, ModalHeader, ModalOverlay, VStack, useDisclosure } from "@chakra-ui/react"
 import { DistanceCalculator } from "./DistanceCalculator";
 import {BsX} from "react-icons/bs";
+import { OnClick } from "../context";
 
 export const DistanceCalculatorPopup = () => {
     const {isOpen, onOpen, onClose} = useDisclosure();
@@ -27,15 +28,14 @@ export const DistanceCalculatorPopup = () => {
                 </ModalHeader>
 
                 <ModalBody>
-                    <VStack>
-                        <HStack>
+                    <OnClick.Provider value = {onClose}>
+                        <Box textAlign = {"center"}>
                             <DistanceCalculator />
-                        </HStack>
-                    </VStack>
+                        </Box>
+                    </OnClick.Provider>
                 </ModalBody>
 
                 <ModalFooter>
-                    
                 </ModalFooter>
             </ModalContent>
         </Modal>

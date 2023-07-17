@@ -1,20 +1,29 @@
-import { useEffect, useState } from "react";
+import { useContext, useEffect, useState } from "react";
 import turf from "turf";
 import length from "@turf/length";
-import { Button } from "@chakra-ui/react";
+import { Box, Button } from "@chakra-ui/react";
+import { OnClick } from "../context";
 
 
 export const DistanceCalculator = (props) => {
-    
-    const [totalDistance , setTotalDistance] = useState(0);
-    const [lastPos , setLastPos] = useState({long : null , lati : null});
-    const [currentPos , setCurrentPos] = useState({long : null , lati : null});
-    const [watchId , setWatchId] = useState(null); 
+    const [totalDistance, setTotalDistance] = useState(0);
+    const [lastPos, setLastPos] = useState({long : null , lati : null});
+    const [currentPos, setCurrentPos] = useState({long : null , lati : null});
+    const [watchId, setWatchId] = useState(null); 
+    const onClose = useContext(OnClick); 
+    const init = "init"
+    const processing = "processing"
+    const finished = "finished"
+    const [status, setStatus] = useState(init);
 
     const start = () => {
         //常に現在地を取得し続ける
-        setWatchId(
-            navigator.geolocation.watchPosition(
+        setWatchId(() => {
+            //ステータスを同期的にprocessingに変更
+            setStatus(processing);
+
+            //watchIdステートの値をセットする
+            return navigator.geolocation.watchPosition(
                 (pos) => {
                     if(pos.coords){
                         const long = pos.coords.longitude;
@@ -38,18 +47,32 @@ export const DistanceCalculator = (props) => {
                     maximumAge : 1000
                 }
             )
-        );
+        });
         
     };
 
     //計測停止
     const stop = () => {
-        navigator.geolocation.clearWatch(watchId);
-        setWatchId(null);
-        const initPos = {long : null , lati : null};
-        setCurrentPos(initPos);
-        setLastPos(initPos);
-        setTotalDistance(0);
+        setWatchId(watchId => {
+            //状態を終了に移行させる
+            setStatus(finished);
+
+            //位置情報の取得を停止する
+            navigator.geolocation.clearWatch(watchId);
+
+            //位置情報を初期化する
+            const initPos = {long : null , lati : null};
+            setCurrentPos(initPos);
+            setLastPos(initPos);
+
+            //watchIdステートをnull状態にする
+            return null;
+        });
+    }
+
+    //データの保存
+    const save = () => {
+        onClose();
     }
 
     useEffect(() => {
@@ -67,25 +90,60 @@ export const DistanceCalculator = (props) => {
         }
     } , [currentPos , lastPos]);
 
-
     return<div>
-        <div style={{"marginBottom" : "35px"}}>
-            {lastPos.long !== null && lastPos.lati !== null &&
-            <div>前回の経度 : {lastPos.long},前回の緯度 : {lastPos.lati}</div>}
-            
-            {currentPos.long !== null && currentPos.lati !== null &&
-            <div>現在の経度 : {currentPos.long},現在の緯度 : {currentPos.lati}</div>}
-            
-            <div>現在の移動距離は、{totalDistance.toFixed(3)}kmです。</div>
-        </div>
-        <div>
-            <Button colorScheme={"red"} onClick={start} isDisabled={watchId !== null}>
-                計測開始
-            </Button>
-            <Button colorScheme={"blue"} onClick={stop} isDisabled={watchId === null}>
-                計測停止
-            </Button>
-        </div>
+        {(status === processing || status === finished) &&
+            <Box style={{"marginBottom" : "35px"}}>  
+                <Box mb = {"8px"}>
+                    {status === processing &&
+                        <Box>
+                            計測中です。
+                        </Box>
+                    }
+
+                    {status === finished &&
+                        <Box>
+                            計測を終了しました。
+                        </Box>
+                    }
+                </Box>
+
+                <Box color = {"red"} fontSize = {"20px"}>
+                    走行距離 : {totalDistance.toFixed(3)}km
+                </Box>
+            </Box>
+        }
+
+        {status === init &&
+            <Box>
+                <Button colorScheme = {"red"} onClick = {start} isDisabled = {status == processing}>
+                    計測開始
+                </Button>
+            </Box>
+        }
+
+        {status === processing &&
+            <Box>
+                <Button colorScheme = {"blue"} onClick = {stop} isDisabled = {status == finished}>
+                    計測終了
+                </Button>
+            </Box>
+        }
+
+        {status === finished &&
+            <Box>
+                <Box mb = {"8px"}>
+                    <Button colorScheme = {"green"} onClick = {save}>
+                        保存する
+                    </Button>
+                </Box>
+
+                <Box>
+                    <Button colorScheme = {"red"} onClick = {onClose}>
+                        破棄する
+                    </Button>
+                </Box>
+            </Box>
+        }
     </div>
 }
 

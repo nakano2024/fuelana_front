@@ -6,7 +6,6 @@ import { DataBox } from "./DataBox"
 
 
 export const MonthlyTripRecordsTotalTable = () => {
-
     const year = useContext(Year);
 
     const month = useContext(Month);
