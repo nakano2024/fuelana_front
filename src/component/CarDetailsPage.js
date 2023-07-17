@@ -21,12 +21,10 @@ export const CarDetailsPage = () => {
     return<Box>
         {car !== null &&
             <ContentWrapper heading = {car.discription}>
-                {isMobile &&
-                    <Box mb = {"36px"}>
-                        <DistanceCalculatorPopup />
-                    </Box>
-                }
-
+                <Box mb = {"36px"}>
+                    <DistanceCalculatorPopup />
+                </Box>
+                
                 <Box mb = {"36px"}>
                     {isMobile ?<CarInfoStack />:<CarInfoTable />}
                 </Box>
