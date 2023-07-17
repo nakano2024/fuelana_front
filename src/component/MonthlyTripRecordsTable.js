@@ -46,7 +46,7 @@ export const MonthlyTripRecordsTable= () => {
                                 走行距離
                             </Th>
                             <Th>
-                                使用目的
+                                用途
                             </Th>
                         </Tr>
                     </Thead>

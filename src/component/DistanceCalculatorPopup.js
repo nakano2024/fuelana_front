@@ -29,9 +29,7 @@ export const DistanceCalculatorPopup = () => {
 
                 <ModalBody>
                     <OnClick.Provider value = {onClose}>
-                        <Box textAlign = {"center"}>
-                            <DistanceCalculator />
-                        </Box>
+                        <DistanceCalculator />
                     </OnClick.Provider>
                 </ModalBody>
 
