@@ -112,7 +112,7 @@ export const DistanceCalculator = (props) => {
 
         {status === INIT &&
             <VStack>
-                <Box pb = {"32px"} fontWeight = {"bold"}>
+                <Box fontWeight = {"bold"} pb = {"32px"}>
                     走行距離の計測を開始します。
                 </Box>
 
@@ -149,15 +149,17 @@ export const DistanceCalculator = (props) => {
 
         {status === PROCESSING &&
             <VStack>
-                {currentPos.long && currentPos.lati ?
-                    <Box color = {"green"} fontWeight = {"bold"} mb = {"36px"}>
-                        計測を開始しました。
-                    </Box>
-                    :
-                    <Box fontWeight = {"bold"} mb = {"36px"}>
-                        <Spinner size={"md"}/>&nbsp;位置情報を取得中です。
-                    </Box>
-                }
+                <Box fontWeight = {"bold"} mb = {"32px"}>
+                    {currentPos.long && currentPos.lati ?
+                        <Box color = {"green"}>
+                            計測を開始しました。
+                        </Box>
+                        :
+                        <Box>
+                            <Spinner size={"md"}/>&nbsp;位置情報を取得中です。
+                        </Box>
+                    }
+                </Box>
 
                 <Box>
                     <Button colorScheme = {"blue"} onClick = {stop} isDisabled = {status == FINISHED}>
@@ -169,7 +171,7 @@ export const DistanceCalculator = (props) => {
 
         {status === FINISHED &&
             <VStack>
-                <Box fontWeight = {"bold"}>
+                <Box fontWeight = {"bold"} pb = {"32px"}>
                     計測を終了しました。
                 </Box>
 
