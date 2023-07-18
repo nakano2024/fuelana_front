@@ -1,7 +1,7 @@
 import { useContext, useEffect, useState } from "react";
 import turf from "turf";
 import length from "@turf/length";
-import { Box, Button, FormControl, HStack, Radio, RadioGroup, VStack } from "@chakra-ui/react";
+import { Box, Button, FormControl, HStack, Radio, RadioGroup, Spinner, VStack } from "@chakra-ui/react";
 import { OnClick } from "../context";
 
 export const DistanceCalculator = (props) => {
@@ -104,20 +104,6 @@ export const DistanceCalculator = (props) => {
     return<Box>
         {(status === PROCESSING || status === FINISHED) &&
             <VStack style={{"marginBottom" : "35px"}}>  
-                <Box mb = {"8px"}>
-                    {watchId !== null &&
-                        <Box fontWeight = {"bold"}>
-                            計測を開始しました。
-                        </Box>
-                    }
-
-                    {status === FINISHED &&
-                        <Box fontWeight = {"bold"}>
-                            計測を終了しました。
-                        </Box>
-                    }
-                </Box>
-
                 <Box color = {"red"} fontSize = {"20px"} fontWeight = {"bold"}>
                     走行距離 : {totalDistance.toFixed(3)}km
                 </Box>
@@ -163,14 +149,30 @@ export const DistanceCalculator = (props) => {
 
         {status === PROCESSING &&
             <VStack>
-                <Button colorScheme = {"blue"} onClick = {stop} isDisabled = {status == FINISHED}>
-                    計測終了
-                </Button>
+                {currentPos.long && currentPos.lati ?
+                    <Box color = {"green"} fontWeight = {"bold"} mb = {"36px"}>
+                        計測を開始しました。
+                    </Box>
+                    :
+                    <Box fontWeight = {"bold"} mb = {"36px"}>
+                        <Spinner size={"md"}/>&nbsp;位置情報を取得中です。
+                    </Box>
+                }
+
+                <Box>
+                    <Button colorScheme = {"blue"} onClick = {stop} isDisabled = {status == FINISHED}>
+                        計測終了
+                    </Button>
+                </Box>
             </VStack>
         }
 
         {status === FINISHED &&
             <VStack>
+                <Box fontWeight = {"bold"}>
+                    計測を終了しました。
+                </Box>
+
                 <Box mb = {"8px"}>
                     <Button colorScheme = {"green"} onClick = {save}>
                         保存する
