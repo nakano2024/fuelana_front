@@ -105,9 +105,9 @@ export const DistanceCalculator = (props) => {
         {(status === PROCESSING || status === FINISHED) &&
             <VStack style={{"marginBottom" : "35px"}}>  
                 <Box mb = {"8px"}>
-                    {status === PROCESSING &&
+                    {watchId !== null &&
                         <Box fontWeight = {"bold"}>
-                            計測中です。
+                            計測を開始しました。
                         </Box>
                     }
 
